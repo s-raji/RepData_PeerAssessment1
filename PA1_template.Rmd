@@ -78,10 +78,10 @@ new_data$steps <- replace(new_data$steps, is.na(new_data$steps), average_steps_i
 *4.Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?*
 
 ```{r echo=TRUE}
-
-hist(new_data$steps, xlab = "Steps", ylab= "Frequency", main = "Total number of steps taken each day")
-
 hist_new_data <- aggregate(steps ~ date, data= new_data, sum, na.rm= TRUE)
+
+hist(hist_new_data$steps, xlab = "Steps", ylab= "Frequency", main = "Total number of steps taken each day")
+
 ```
 
 The mean and median total number of steps taken per day after replacing the NA values are:

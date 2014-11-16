@@ -26,10 +26,10 @@ total_missing_values <- sum(is.na(data$steps))
 ## The strategy to imput is to fill the NA values with the average steps for that interval
 new_data <- data.frame(data)
 new_data$steps <- replace(new_data$steps, is.na(new_data$steps), average_steps_interval$steps)
-
-hist(new_data$steps, xlab = "Steps", ylab= "Frequency", main = "Total number of steps taken each day")
-
 hist_new_data <- aggregate(steps ~ date, data= new_data, sum, na.rm= TRUE)
+
+hist(hist_new_data$steps, xlab = "Steps", ylab= "Frequency", main = "Total number of steps taken each day")
+
 
 mean_new_data_steps <- mean(hist_new_data$steps)
 median_new_data_steps <- median(hist_new_data$steps)

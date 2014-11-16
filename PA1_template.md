@@ -20,7 +20,7 @@ hist_data <- aggregate(steps ~ date, data= data, sum, na.rm= TRUE)
 hist(hist_data$steps, xlab = "Steps", ylab = "Frequency", main = "Total number of steps taken each day")
 ```
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2.png) 
+![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png) 
 
 ```r
 data_na_rm <- subset(data, steps != "NA")
@@ -37,7 +37,7 @@ mean_steps
 ```
 
 ```
-## [1] 10766
+## [1] 10766.19
 ```
 
 ```r
@@ -61,7 +61,7 @@ plot(average_steps_interval$interval, average_steps_interval$steps, type= "l", x
 title("Average steps averaged across all days at 5 minute interval")
 ```
 
-![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4.png) 
+![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png) 
 
 *2.Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?*
 
@@ -110,14 +110,12 @@ new_data$steps <- replace(new_data$steps, is.na(new_data$steps), average_steps_i
 
 
 ```r
-hist(new_data$steps, xlab = "Steps", ylab= "Frequency", main = "Total number of steps taken each day")
-```
-
-![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8.png) 
-
-```r
 hist_new_data <- aggregate(steps ~ date, data= new_data, sum, na.rm= TRUE)
+
+hist(hist_new_data$steps, xlab = "Steps", ylab= "Frequency", main = "Total number of steps taken each day")
 ```
+
+![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8-1.png) 
 
 The mean and median total number of steps taken per day after replacing the NA values are:
 
@@ -128,7 +126,7 @@ mean_new_data_steps
 ```
 
 ```
-## [1] 10766
+## [1] 10766.19
 ```
 
 ```r
@@ -137,7 +135,7 @@ median_new_data_steps
 ```
 
 ```
-## [1] 10766
+## [1] 10766.19
 ```
 
 The mean steps is same as the one before imputting the NA values and the median is almost the same as the one before imputting the NA values. There is no impact on replacing the NA values with the average steps for that interval
@@ -178,4 +176,4 @@ g<- g + labs(title = "Time series plot of the 5-minute interval & average number
 g
 ```
 
-![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11.png) 
+![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11-1.png) 
